@@ -12,7 +12,7 @@
   "author": "",
   "license": "ISC",
   "config": {
-    "region": "us-east-1"
+    "region": "eu-central-1"
   },
   "dependencies": {
     "claudia-api-builder": "^2.4.2"
