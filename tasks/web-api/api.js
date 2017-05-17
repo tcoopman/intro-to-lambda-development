@@ -4,5 +4,6 @@ const API = require('claudia-api-builder'),
 module.exports = api;
 
 api.get('/hello', function (request) {
-	return 'hello world';
+	const name = request.queryString.name;
+	return `hello ${name}`;
 });
