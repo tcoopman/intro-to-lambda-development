@@ -8,5 +8,16 @@ aws dynamodb create-table --table-name dynamo-test \
 
 # Create new user
 
-curl -H "Content-Type: application/json" -X POST --data @example.json <API-URL>/user
+http://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html
 
+curl -H "Content-Type: application/json" -X POST --data @example.json https://xn4d1m1v69.execute-api.us-east-1.amazonaws.com/latest/user
+
+
+curl -H "Content-Type: application/json" -X POST --data @example.json https://xn4d1m1v69.execute-api.us-east-1.amazonaws.com/latest/user
+
+# Get the user
+curl https://xn4d1m1v69.execute-api.us-east-1.amazonaws.com/latest/user/test
+
+# passing arguments to npm
+
+npm run update -- --configure-db dynamo-test
