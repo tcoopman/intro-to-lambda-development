@@ -1,14 +1,28 @@
 {
-  "name": "lambda-trigger",
+  "name": "file-upload",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "create": "claudia create --handler index.main --region us-east-1"
+    "create": "claudia create --handler index.main --region $npm_package_config_region --version dev",
+    "update": "claudia update --version dev",
+    "release": "claudia set-version --version production",
+    "wire-dev": "claudia add-s3-event-source --version dev --bucket $npm_package_config_buckets_dev --prefix upload/",
+    "wire-prod": "claudia add-s3-event-source --version production --bucket $npm_package_config_buckets_production --prefix upload/"
   },
   "author": "",
   "license": "ISC",
+  "config": {
+    "region": "eu-central-1",
+    "buckets": {
+      "dev": "lambda-dev-bucket-xw124",
+      "production": "lambda-production-bucket-xw124"
+    }
+  },
   "devDependencies": {
     "claudia": "^2.12.1"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.52.0"
   }
 }

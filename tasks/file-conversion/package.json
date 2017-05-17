@@ -12,10 +12,10 @@
   "keywords": [],
   "author": "",
   "config": {
-    "region": "us-east-1",
+    "region": "eu-central-1",
     "buckets": {
-      "dev": "test-buckets-dev",
-      "production": "buckets-production"
+      "dev": "lambda-dev-bucket-xw124",
+      "production": "lambda-production-bucket-xw124"
     }
   },
   "devDependencies": {
