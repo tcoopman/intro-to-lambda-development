@@ -93,12 +93,11 @@ exports.main = function(eventObject, context, callback) {
             .then(newfilename => uploadToS3(newfilename, bucketName))
             .then(() => {
                 console.log("ALL DONE");
-            })
+                    callback(null, 'OK');
+                })
             .catch(err => {
                 console.log("something failed");
                 console.log(err, err.stack);
             });
     });
-
-    callback(null, 'OK');
 }
