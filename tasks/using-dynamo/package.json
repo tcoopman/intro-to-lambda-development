@@ -7,7 +7,10 @@
   ],
   "scripts": {
     "create": "claudia create --region us-east-1 --api-module api --policies policies",
-    "update": "claudia update"
+    "reconfigureDev": "claudia update --version dev --configure-db dynamo-test",
+    "updateDev": "claudia update --version dev",
+    "reconfigureProduction": "claudia update --version production --configure-db dynamo-test",
+    "updateProduction": "claudia update --version production"
   },
   "dependencies": {
     "aws-sdk": "^2.52.0",
