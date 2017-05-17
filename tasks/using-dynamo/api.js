@@ -42,19 +42,34 @@ api.get('/user', function (request) {
 	return dynamoDb.scan(params).promise();
 });
 
-api.get('/user/search', function (request) {
-	const name = request.queryString.name;
-	const TableName = getTableName(request);
-	const params = {
-		TableName,
-		ScanFilter: {
-			"name": {
-				AttributeValueList: [name],
-				ComparisonOperator: "CONTAINS"
-			}
+const createScanFilter = (name, age) => {
+	const ScanFilter = {};
+	if (name) {
+		ScanFilter.name = {
+			AttributeValueList: [name],
+			ComparisonOperator: "CONTAINS"
 		}
 	}
+	age = Number.parseInt(age);
+	if (Number.isFinite(age)) {
+		ScanFilter.age = {
+			AttributeValueList: [age],
+			ComparisonOperator: "EQ"
+		}
+
+	}
+	return ScanFilter;
+}
+
+api.get('/user/search', function (request) {
+	const TableName = getTableName(request);
+
+	const {name, age} = request.queryString;
+	const params = {TableName, ScanFilter: createScanFilter(name, age)};
+	console.log(JSON.stringify(params, null, 4));
+
 	return dynamoDb.scan(params).promise();
+
 });
 
 api.addPostDeployConfig(
