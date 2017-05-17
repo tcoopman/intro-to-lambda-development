@@ -10,8 +10,12 @@ aws logs filter-log-events --log-group-name "/aws/lambda/using-dynamodb" --regio
 
 get zip
 
+
+aws lambda list-functions --region us-east-1
 aws lambda get-function --function-name "web-api" --region us-east-1
 curl $(aws lambda get-function --function-name "web-api" --region us-east-1 --query "Code.Location" --output text) > output.zip
+aws lambda invoke --function-name lambda-trigger --region us-east-1 --payload '{}' outfile  
+
 
 dynamodb
 aws dynamodb list-tables

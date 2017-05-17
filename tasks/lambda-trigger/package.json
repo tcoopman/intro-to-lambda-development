@@ -1,0 +1,14 @@
+{
+  "name": "lambda-trigger",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "create": "claudia create --handler index.main --region us-east-1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "claudia": "^2.12.1"
+  }
+}
