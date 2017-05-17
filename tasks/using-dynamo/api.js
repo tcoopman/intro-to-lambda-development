@@ -35,10 +35,24 @@ api.get('/user/{userid}', function (request) {
 });
 
 api.get('/user', function (request) {
-	console.log(request);
 	const TableName = getTableName(request);
 	const params = {
 		TableName
+	}
+	return dynamoDb.scan(params).promise();
+});
+
+api.get('/user/search', function (request) {
+	const name = request.queryString.name;
+	const TableName = getTableName(request);
+	const params = {
+		TableName,
+		ScanFilter: {
+			"name": {
+				AttributeValueList: [name],
+				ComparisonOperator: "CONTAINS"
+			}
+		}
 	}
 	return dynamoDb.scan(params).promise();
 });
