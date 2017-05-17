@@ -8,8 +8,9 @@ api.get('/hello/{name}/{lastname}', function (request) {
 	if (name === 'foo') {
 		throw new  Error("Incorrect name");
 	}
+	console.log(request);
 	return `hello ${name} ${lastname}`;
 }, {
 	success: {contentType: 'text/hmtl'},
-	error: { code: 403}
+	error: { code: 403 }
 });
