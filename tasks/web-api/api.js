@@ -3,7 +3,7 @@ const API = require('claudia-api-builder'),
 
 module.exports = api;
 
-api.get('/hello', function (request) {
-	const name = request.queryString.name;
-	return `hello ${name}`;
+api.get('/hello/{name}/{lastname}', function (request) {
+	const {name, lastname} = request.pathParams;
+	return `hello ${name} ${lastname}`;
 });
